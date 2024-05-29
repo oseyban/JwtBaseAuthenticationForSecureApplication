@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: JwtForBank
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bank_database
+    username: db_user
+    password: db_password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  security:
+    jwt:
+      token-secret: 3WrcJ5s9gGvNvEaTJ2aA$1NExLpQl4NRLkRVGvSfMWiqTQ^9YnA8J5di  # created a secret key for server
+      token-expiration-time: 180000 # 3 minute in milliseconds
+server:
+  port: 8080 # project use port:8080
+logging:
+  file:
+    name: log/jwtapp.log
+  pattern:
+    file: "%d %-5level [%thread] %logger:%msg%n"
+  level:
+    '[org.springframework.web]': WARN
+    '[org.hibernate]': INFO
+    '[com.tpe]': INFO
+    springframework:
+      web: DEBUG
+      security: INFO
